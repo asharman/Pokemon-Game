@@ -7,7 +7,8 @@
     <title>RPG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -15,26 +16,45 @@
 </head>
 
 <body>
-    <div id="choose-your-character">
-        <div id="squirtle" class="character" value="squirtle">
-            <img src="assets/images/squirtleidle.png" width="60px" height="auto" style="image-rendering: pixelated;">
+    <!-- <div id="background"> -->
+        <div class="container">
+            <div class="grid">
+                <div class="row" id="top-row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div id="choose-your-character">
+                            <img id="table" src="assets/images/table.png" width="100%">
+                            <div id="starter-pokemon">
+                                <div class="row">
+                                    <div id="squirtle" class="character mx-auto" value="squirtle">
+                                        <img src="assets/images/squirtleidle.png" width="110px" height="auto" style="image-rendering: pixelated;">
+                                    </div>
+                                    <div id="charmander" class="character mx-auto" value="charmander">
+                                        <img src="assets/images/charmanderidle.png" width="110px" height="auto" style="image-rendering: pixelated;">
+                                    </div>
+                                    <div id="bulbasaur" class="character mx-auto" value="bulbasaur">
+                                        <img src="assets/images/bulbasauridle.png" width="110px" height="auto" style="image-rendering: pixelated;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="button" id="attack" class="attack">Attack</button>
+                </div>
+                <div class="row">
+                    <div id="your-character"></div>
+
+                    <div id="current-enemy"></div>
+                </div>
+                <div id="enemy-bench"></div>
+                <div class="row">
+                    <div id="defeated-enemy"></div>
+                </div>
+            </div>
         </div>
-        <div id="charmander" class="character" value="charmander">
-            <img src="assets/images/charmanderidle.png" width="60px" height="auto" style="image-rendering: pixelated;">
-        </div>
-        <div id="bulbasaur" class="character" value="bulbasaur">
-            <img src="assets/images/bulbasauridle.png" width="60px" height="auto" style="image-rendering: pixelated;">
-        </div>
-    </div>
-    <button type="button" id="attack" class="attack">Attack</button>
-
-    <div id="your-character"></div>
-
-    <div id="enemy-banch"></div>
-
-    <div id="current-enemy"></div>
-
-    <div id="defeated-enemy"></div>
+    <!-- </div> -->
 </body>
 
 </html>

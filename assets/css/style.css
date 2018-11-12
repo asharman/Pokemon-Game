@@ -1,9 +1,47 @@
-div {
+html,
+body {
+    height: 100%;
+    width: auto;
+    background-image: url(../images/pokeballbackground.jpg)
+}
+
+.container {
+    image-rendering: pixelated;
+    background: url(../images/labinteriordark.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100%;
+    /* width: ; */
+}
+
+#choose-your-character {
     border-width: 2px;
     border-style: solid;
     border-color: red;
+    position: relative;
+    margin-top: 45%;
 }
 
 .character {
     display: inline-block;
+    border-width: 2px;
+    border-style: solid;
+    border-color: red;
+    width: auto;
+}
+
+img {
+    image-rendering: pixelated;
+    
+}
+
+#table {
+    z-index: -10;
+}
+
+
+#starter-pokemon {
+    position: absolute;
+    top: 50px;
+    width: 100%;
 }
