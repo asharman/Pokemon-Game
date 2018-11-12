@@ -14,6 +14,14 @@ body {
     /* width: ; */
 }
 
+#top-row {
+    padding-top: 3%;
+}
+
+#top-row > * {
+    /* display: none; */
+}
+
 #choose-your-character {
     border-width: 2px;
     border-style: solid;
@@ -44,4 +52,8 @@ img {
     position: absolute;
     top: 50px;
     width: 100%;
+}
+
+#combat-row {
+    padding: 10px, 0;
 }
