@@ -16,9 +16,8 @@
 </head>
 
 <body>
-    <!-- <div id="background"> -->
-    <div class="container" style="image-rendering:pixelated; background-repeat: no-repeat; background-size: cover; height: 100%">
-        <div class="grid">
+    <div class="container d-flex flex-column" style="image-rendering:pixelated; background-repeat: no-repeat; background-size: cover; height: 100%">
+        <div id="main-game-container" class="container-fluid flex-grow-1">
             <div class="row" id="top-row">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6 col-sm-12">
@@ -26,14 +25,14 @@
                         <img id="table" class="img-fluid" src="assets/images/table.png" width="100%">
                         <div id="starter-pokemon">
                             <div class="row">
-                                <div id="squirtle" class="character mx-auto" value="squirtle">
-                                    <img src="assets/images/squirtleidle.png" width="110px" height="auto" style="image-rendering: pixelated;">
+                                <div id="squirtle" class="character mx-auto img-fluid" value="squirtle">
+                                    <img class="img-fluid" src="assets/images/squirtle/idle.png" style="image-rendering: pixelated;">
                                 </div>
-                                <div id="charmander" class="character mx-auto" value="charmander">
-                                    <img src="assets/images/charmanderidle.png" width="110px" height="auto" style="image-rendering: pixelated;">
+                                <div id="charmander" class="character mx-auto img-fluid" value="charmander">
+                                    <img class="img-fluid" src="assets/images/charmander/idle.png" style="image-rendering: pixelated;">
                                 </div>
-                                <div id="bulbasaur" class="character mx-auto" value="bulbasaur">
-                                    <img src="assets/images/bulbasauridle.png" width="110px" height="auto" style="image-rendering: pixelated;">
+                                <div id="bulbasaur" class="character mx-auto img-fluid" value="bulbasaur">
+                                    <img class="img-fluid" src="assets/images/bulbasaur/idle.png" style="image-rendering: pixelated;">
                                 </div>
                             </div>
                         </div>
@@ -51,16 +50,21 @@
                     <div id="current-enemy"></div>
                 </div>
             </div>
-            <div class="row" id="button-row">
+            <div class="row" id="button-row"></div>
 
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div id="text-row" class="mx-auto"></div>
+
+        </div>
+        <div id="text-row" class="container-fluid">
+            <div class="col-sm-12">
+                <img id="textbox"class="w-100" src="assets/images/textbox.png">
+                <div id="inGameText">
+                    <p>Select your starter pokemon!</p>
                 </div>
-
             </div>
         </div>
+
+
+    </div>
     </div>
     <!-- </div> -->
 </body>

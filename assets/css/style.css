@@ -2,12 +2,12 @@ html,
 body {
     height: 100%;
     width: auto;
-    background-image: url(../images/pokeballbackground.jpg)
+    background-image: url(../images/background/pokeballbackground.jpg)
 }
 
 .container {
     image-rendering: pixelated;
-    background: url(../images/labinteriordark.png);
+    background: url(../images/background/labinteriordark.png);
     background-repeat: no-repeat;
     background-size: 100%;
     height: 100%;
@@ -15,7 +15,7 @@ body {
 }
 
 #top-row {
-    padding-top: 3%;
+    /* padding-top: 3%; */
 }
 #combat-row {
     padding-top: 10%;
@@ -28,6 +28,12 @@ body {
 .character {
     display: inline-block;
     width: auto;
+
+}
+
+.character img {
+    min-width: 110px;
+    max-width: 110px;
 }
 
 img {
@@ -46,9 +52,6 @@ img {
     width: 100%;
 }
 
-#combat-row {
-    padding: 10px, 0;
-}
 
 #portrait {
     width: 100px;
@@ -109,10 +112,24 @@ img {
     height: 100px;
 }
 
-#text-row {
-    background: url(../images/textbox.png);
-    background-size: contain;
-    width: 95%;
+#textbox {
     height: 200px;
-    background-repeat: no-repeat;
+    position: relative;
+}
+
+#main-game-container {
+    justify-content: space-between;
+}
+
+#inGameText {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    z-index: 100;
+}
+
+@media (max-width: 425px) {
+    .character img {
+        min-width: 50px;
+    }
 }
