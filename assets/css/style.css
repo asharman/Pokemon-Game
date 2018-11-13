@@ -11,6 +11,7 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
     height: 100%;
+    position: relative;
 }
 
 #top-row {
@@ -20,11 +21,8 @@ body {
     padding-top: 10%;
 }
 #choose-your-character {
-    border-width: 2px;
-    border-style: solid;
-    border-color: red;
     position: relative;
-    margin-top: 45%;
+    margin-top: 30%;
 }
 
 .character {
@@ -100,4 +98,21 @@ img {
 #battlesprite .healthBar {
     height: 10px;
     bottom: -20px;
+}
+
+#button-row {
+    padding-top: 40px;
+}
+
+.attack {
+    width: 200px;
+    height: 100px;
+}
+
+#text-row {
+    background: url(../images/textbox.png);
+    background-size: contain;
+    width: 95%;
+    height: 200px;
+    background-repeat: no-repeat;
 }

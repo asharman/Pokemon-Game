@@ -157,6 +157,8 @@ var game = {
             if (game.charactersArray[game.enemyIndex].isDefeated === false) {
                 $("#currentEnemyColumn").append(`<div id='battlesprite' value=${game.charactersArray[this.enemyIndex].name} class="mx-auto battlesprite current-enemy"><img class='battlesprite' src='assets/images/${game.charactersArray[game.enemyIndex].name}enemyidle.png'><progress id='${game.charactersArray[this.enemyIndex].name}HP' class='healthBar ${game.charactersArray[this.enemyIndex].name}HP' value='${game.charactersArray[this.enemyIndex].health}' max='${game.charactersArray[this.enemyIndex].maxHealth}'</progress></div>`)
             }
+            $("#button-row").empty();
+            $("#button-row").append('<button type="button" id="attack" class="attack btn btn-danger mx-auto">Attack</button>');
         }
     },
 
@@ -223,7 +225,7 @@ $(document).ready(function () {
         }
     });
 
-    $(".attack").on("click", function () {
+    $("#button-row").on("click", ".attack", function () {
         if (game.stage === 2) {
             game.applyDamage(game.charactersArray[game.enemyIndex], game.charactersArray[game.playerIndex]);
             game.checkDefeated(game.charactersArray[game.enemyIndex]);
@@ -233,6 +235,8 @@ $(document).ready(function () {
             game.applyDamage(game.charactersArray[game.playerIndex], game.charactersArray[game.enemyIndex]);
             game.checkDefeated(game.charactersArray[game.playerIndex]);
 
+        } else if (game.stage === 1) {
+            alert("There's no opponent!")
         }
     })
 
