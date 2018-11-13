@@ -15,7 +15,7 @@ body {
 }
 
 #top-row {
-    /* padding-top: 3%; */
+    padding-top: 3%;
 }
 #combat-row {
     padding-top: 10%;
@@ -98,9 +98,13 @@ img {
     position: absolute;
 }
 
-#battlesprite .healthBar {
+.battleHealthBar {
     height: 10px;
     bottom: -20px;
+    width: 100%;
+    position: absolute;
+    bottom: -10;
+    
 }
 
 #button-row {

@@ -12,33 +12,36 @@ var game = {
 
         {
             name: "squirtle",
-            id: "#squirtle",
+            id: 0,
             power: 3,
             counterAttackPower: 5,
-            health: 100,
+            currentHealth: 100,
             maxHealth: 100,
+            // healthPercent: ((this.currentHealth)/(this.maxHealth) * 100),
             isPlayer: false,
             isEnemy: true,
             isDefeated: false,
         },
         {
             name: "charmander",
-            id: "#charmander",
+            id: 1,
             power: 5,
             counterAttackPower: 3,
-            health: 65,
+            currentHealth: 65,
             maxHealth: 65,
+            // healthPercent: ((this.currentHealth)/(this.maxHealth) * 100),
             isPlayer: false,
             isEnemy: true,
             isDefeated: false,
         },
         {
             name: "bulbasaur",
-            id: "#bulbasaur",
+            id: 2,
             power: 4,
             counterAttackPower: 4,
-            health: 85,
+            currentHealth: 85,
             maxHealth: 85,
+            // healthPercent: ((this.currentHealth)/(this.maxHealth) * 100),
             isPlayer: false,
             isEnemy: true,
             isDefeated: false,
@@ -68,32 +71,38 @@ var game = {
 
     applyDamage: function (defender, atacker) {
         if (atacker.isDefeated === false) {
-            defender.health -= this.damageCalculation(atacker);
+            defender.currentHealth -= this.damageCalculation(atacker);
         }
 
+        console.log(`Player health: ${game.charactersArray[game.playerIndex].healthPercent}%`);
+        console.log(`Player health: ${game.charactersArray[game.enemyIndex].healthPercent}%`);
+
+
         let playerHP = `.${game.charactersArray[game.playerIndex].name}HP`;
+        let playerHealthPercent = ((game.charactersArray[game.playerIndex].currentHealth / game.charactersArray[game.playerIndex].maxHealth) * 100);
         $(playerHP).each(function () {
             // alert("Updating player HP");
-            $(playerHP).attr("value", game.charactersArray[game.playerIndex].health);
+            $(playerHP).attr("style", `width:${playerHealthPercent}%`);
 
         });
         let enemyHP = `.${game.charactersArray[game.enemyIndex].name}HP`;
+        let enemyHealthPercent = ((game.charactersArray[game.enemyIndex].currentHealth / game.charactersArray[game.enemyIndex].maxHealth) * 100);
         $(enemyHP).each(function () {
             // alert("Updating enemy HP");
-            $(enemyHP).attr("value", game.charactersArray[game.enemyIndex].health);
+            $(enemyHP).attr("style", `width:${enemyHealthPercent}%`);
         });
     },
 
     checkDefeated: function (character) {
         console.log(`check defeated has run ${character.name}`);
 
-        if ((character.isPlayer) && (character.health <= 0)) {
+        if ((character.isPlayer) && (character.currentHealth <= 0)) {
             character.isDefeated = true;
             alert("You've lost!");
             location.reload();
         }
 
-        if ((character.isEnemy) && (character.health < 0)) {
+        if ((character.isEnemy) && (character.currentHealth < 0)) {
             character.isDefeated = true;
             this.enemiesDefeated++;
             game.setUpBattle();
@@ -123,17 +132,18 @@ var game = {
         $("#top-row").empty();
         $("#top-row").append(teamColumn, emptyColumn, enemyColumn);
         for (i in game.charactersArray) {
+            let healthPercent = ((game.charactersArray[i].currentHealth / game.charactersArray[i].maxHealth) * 100);
             if ((game.charactersArray[i].isPlayer) && (game.charactersArray[i].isDefeated === false)) {
-                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portrait.png'><progress id='${game.charactersArray[i].name}HP' class='healthBar ${game.charactersArray[i].name}HP' value='${game.charactersArray[i].health}' max='${game.charactersArray[i].maxHealth}'</progress></div>`;
+                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portrait.png'><div id='${game.charactersArray[i].name}HP' class='progress healthBar'><div id='${game.charactersArray[i].name}HP' class='progress-bar healthBarCurrent ${game.charactersArray[i].name}HP' style='width:${healthPercent}%'</div></div></div>`;
                 $("#teamColumn").append(teamDiv);
             } else if ((game.charactersArray[i].isPlayer) && (game.charactersArray[i].isDefeated === true)) {
-                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portraitgrey.png'><progress id='${game.charactersArray[i].name}HP' class='healthBar ${game.charactersArray[i].name}HP' value='${game.charactersArray[i].health}' max='${game.charactersArray[i].maxHealth}'</progress></div>`;
+                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portraitgrey.png'><div id='${game.charactersArray[i].name}HP' class='progress healthBar'><div id='${game.charactersArray[i].name}HP' class='progress-bar healthBarCurrent ${game.charactersArray[i].name}HP' style='width:${healthPercent}%'</div></div></div>`;
                 $("#teamColumn").append(teamDiv);
             } else if ((game.charactersArray[i].isEnemy) && game.charactersArray[i].isDefeated === false) {
-                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portrait.png'><progress id='${game.charactersArray[i].name}HP' class='healthBar ${game.charactersArray[i].name}HP' value='${game.charactersArray[i].health}' max='${game.charactersArray[i].maxHealth}'</progress></div>`;
+                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portrait.png'><div id='${game.charactersArray[i].name}HP' class='progress healthBar'><div id='${game.charactersArray[i].name}HP' class='progress-bar healthBarCurrent ${game.charactersArray[i].name}HP' style='width:${healthPercent}%'</div></div></div>`;
                 $("#enemyTeamColumn").append(teamDiv);
             } else if ((game.charactersArray[i].isEnemy) && game.charactersArray[i].isDefeated === true) {
-                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portraitgrey.png'><progress id='${game.charactersArray[i].name}HP' class='healthBar ${game.charactersArray[i].name}HP' value='${game.charactersArray[i].health}' max='${game.charactersArray[i].maxHealth}'</progress></div>`;
+                let teamDiv = `<div id='portrait'><img id=${game.charactersArray[i].name} value='${game.charactersArray[i].name}' class='portrait character' src='assets/images/${game.charactersArray[i].name}/portraitgrey.png'><div id='${game.charactersArray[i].name}HP' class='progress healthBar'><div id='${game.charactersArray[i].name}HP' class='progress-bar healthBarCurrent ${game.charactersArray[i].name}HP' style='width:${healthPercent}%'</div></div></div>`;
                 $("#enemyTeamColumn").append(teamDiv);
             }
         }
@@ -151,11 +161,13 @@ var game = {
                 "id": "currentEnemyColumn"
             });
             let emptyColumn = $("<div></div>").attr("class", "col-md-3");
+            let playerHealthPercent = ((game.charactersArray[game.playerIndex].currentHealth / game.charactersArray[game.playerIndex].maxHealth) * 100);
+            let enemyHealthPercent = ((game.charactersArray[game.enemyIndex].currentHealth / game.charactersArray[game.enemyIndex].maxHealth) * 100);
             $("#combat-row").empty();
             $("#combat-row").append(emptyColumn, playerColumn, currentEnemyColumn);
-            $("#playerColumn").append(`<div id='battlesprite' value=${game.charactersArray[this.playerIndex].name} class="mx-auto battlesprite current-player"><img class='battlesprite' src='assets/images/${game.charactersArray[game.playerIndex].name}/playeridle.png'><progress id='${game.charactersArray[this.playerIndex].name}HP' class='healthBar ${game.charactersArray[this.playerIndex].name}HP' value='${game.charactersArray[this.playerIndex].health}' max='${game.charactersArray[this.playerIndex].maxHealth}'</progress></div>`)
+            $("#playerColumn").append(`<div id='battlesprite' value=${game.charactersArray[this.playerIndex].name} class="mx-auto battlesprite current-player"><img class='battlesprite' src='assets/images/${game.charactersArray[game.playerIndex].name}/playeridle.png'><div id='${game.charactersArray[this.playerIndex].name}HP' class='progress battleHealthBar'><div id='${game.charactersArray[this.playerIndex].name}HP' class='progress-bar battleHealthBarCurrent ${game.charactersArray[this.playerIndex].name}HP' style='width:${playerHealthPercent}%'</div></div></div>`)
             if (game.charactersArray[game.enemyIndex].isDefeated === false) {
-                $("#currentEnemyColumn").append(`<div id='battlesprite' value=${game.charactersArray[this.enemyIndex].name} class="mx-auto battlesprite current-enemy"><img class='battlesprite' src='assets/images/${game.charactersArray[game.enemyIndex].name}/enemyidle.png'><progress id='${game.charactersArray[this.enemyIndex].name}HP' class='healthBar ${game.charactersArray[this.enemyIndex].name}HP' value='${game.charactersArray[this.enemyIndex].health}' max='${game.charactersArray[this.enemyIndex].maxHealth}'</progress></div>`)
+                $("#currentEnemyColumn").append(`<div id='battlesprite' value=${game.charactersArray[this.enemyIndex].name} class="mx-auto battlesprite current-enemy"><img class='battlesprite' src='assets/images/${game.charactersArray[game.enemyIndex].name}/enemyidle.png'><div id='${game.charactersArray[this.enemyIndex].name}HP' class='progress battleHealthBar'><div id='${game.charactersArray[this.enemyIndex].name}HP' class='progress-bar battleHealthBarCurrent ${game.charactersArray[this.enemyIndex].name}HP' style='width:${enemyHealthPercent}%'</div></div></div>`)
             }
             $("#button-row").empty();
             $("#button-row").append('<button type="button" id="attack" class="attack btn btn-danger mx-auto">Attack</button>');
@@ -229,9 +241,6 @@ $(document).ready(function () {
         if (game.stage === 2) {
             game.applyDamage(game.charactersArray[game.enemyIndex], game.charactersArray[game.playerIndex]);
             game.checkDefeated(game.charactersArray[game.enemyIndex]);
-            console.log(`Player attacks. Enemy Health.${game.charactersArray[game.enemyIndex].health}`);
-            console.log(`Enemy is defeated: ${game.charactersArray[game.enemyIndex].isDefeated}`);
-
             game.applyDamage(game.charactersArray[game.playerIndex], game.charactersArray[game.enemyIndex]);
             game.checkDefeated(game.charactersArray[game.playerIndex]);
 
