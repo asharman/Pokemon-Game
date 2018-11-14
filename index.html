@@ -16,10 +16,14 @@
 </head>
 
 <body>
+    <!-- The main container for the game -->
     <div class="container d-flex flex-column" style="image-rendering:pixelated; background-repeat: no-repeat; background-size: cover; height: 100%">
+        <!-- Container that holds everything except for the text box -->
         <div id="main-game-container" class="container-fluid flex-grow-1">
+            <!-- The top row of the game, originally is filled with the starter pokemon, but is replaced with the pokemon team portraits -->
             <div class="row" id="top-row">
                 <div class="col-lg-3"></div>
+                <!-- Column that holds the table image and starter pokemon -->
                 <div class="col-lg-6 col-sm-12">
                     <div id="choose-your-character">
                         <img id="table" class="img-fluid" src="assets/images/table.png" width="100%">
@@ -39,21 +43,12 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row" id="combat-row">
-                <div class="col-6">
-                    <div id="your-character">
-
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div id="current-enemy"></div>
-                </div>
-            </div>
+            <!-- The row where the pokemon sprites will show up -->
+            <div class="row" id="combat-row"></div>
+            <!-- The row that holds the attack buttons -->
             <div class="row" id="button-row"></div>
-
-
         </div>
+        <!-- The container for the text box that keeps it at the bottom of the screen -->
         <div id="text-row" class="container-fluid">
             <div class="col-sm-12">
                 <img id="textbox"class="w-100" src="assets/images/textbox.png">
@@ -66,7 +61,6 @@
 
     </div>
     </div>
-    <!-- </div> -->
 </body>
 
 </html>

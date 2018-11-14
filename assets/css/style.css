@@ -1,64 +1,65 @@
+/* Import the font for the text box */
 @font-face {
     font-family: "pixelfont";
     src: url(../fonts/pokemon_fire_red.woff) format("woff");
 }
 
+/* Main body styling */
+
 html,
 body {
-    font-family: "pixelfont";
     height: 100%;
     width: auto;
     background-image: url(../images/background/pokeballbackground.jpg);
 }
 
+/* Background image for the main container */
 .container {
-    image-rendering: pixelated;
     background: url(../images/background/labinteriordark.png);
     background-repeat: no-repeat;
     background-size: 100%;
+    background-position: center;
     height: 100%;
     position: relative;
 }
 
-#top-row {
-    padding-top: 3%;
-}
-#combat-row {
-    padding-top: 10%;
-}
-#choose-your-character {
-    position: relative;
-    margin-top: 30%;
-}
-
-.character {
-    display: inline-block;
-    width: auto;
-
-}
-
-.character img {
-    min-width: 110px;
-    max-width: 110px;
-}
-
+/* Set all images to be rendered pixelated */
 img {
     image-rendering: pixelated;
     
 }
 
-#table {
-    z-index: -10;
+/* Top Row ============================================================================================================= */
+
+/* Push the content in the top row down a little bit */
+#top-row {
+    padding-top: 3%;
 }
 
+/* Style for the div that holds the starter pokemon */
+#choose-your-character {
+    position: relative;
+    margin-top: 30%;
+}    
 
+/* Style for the individual pokemon divs */
+.character {
+    width: auto;
+}
+
+/* Set the width of the pokemon sprites on the table */
+.character img {
+    min-width: 110px;
+}
+
+/* Position the row that the starter pokemon are in so that they sit on the table */
 #starter-pokemon {
     position: absolute;
     top: 50px;
     width: 100%;
 }
 
-
+/* Set the dimensions of the divs that the pokemon portraits are in */
 #portrait {
     width: 100px;
     height: 100px;
@@ -67,46 +68,56 @@ img {
     display: inline-block;
 }
 
-.healthBar {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 4px;
-    border-radius: 2px;
-}
-
-.healthBarCurrent {
-    background-color: green;
-}
-
-
+/* Style the image of the pokemon portraits */
 .portrait {
     width: 100%;
     height: 100%;
-    
-    display: inline-block;
     border: 2px solid black;  
     position: absolute; 
 }
 
+/* Float the enemy team portraits to the right so they line up cleaner */
 #enemyTeamColumn #portrait {
     float: right;
 }
 
+/* Style the healthbar that sits in the portraits */
+.healthBar {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 6px;
+}
+
+/* Set the initial background color of the health bar */
+.healthBarCurrent {
+    background-color: green;
+}
+
+/* Combat Row ============================================================================================================ */
+
+/* Add some padding for the combat row so it sits away from the portraits */
+#combat-row {
+    padding-top: 10%;
+}    
+
+/* Style the divs that the sprites live in */
 #battlesprite {
     width: 100px;
     height: 100px;
-    background-position: center;
     margin: 0 auto;
     position: relative;
 }
 
+/* Style the image of the sprites to fill the div and sit on the same line*/
 .battlesprite {
     width: 100%;
-    height: 100%;
+    height: auto;
     position: absolute;
+    bottom: 0;
 }
 
+/* Position the health bar under the player sprites */
 .battleHealthBar {
     height: 10px;
     bottom: -20px;
@@ -116,38 +127,53 @@ img {
     
 }
 
+/* Button row =============================================================================================================== */
+
+/* Add padding so the content moves down a little */
 #button-row {
     padding-top: 40px;
-}
+}    
 
+/* Set the dimensions of the attack button */
 .attack {
     width: 200px;
     height: 100px;
 }
 
+/* Textbox dimensions */
 #textbox {
     height: 200px;
     position: relative;
 }
 
-#main-game-container {
-    justify-content: space-between;
-}
-
+/* Style the div inside of the text box that holds all text */
 #inGameText {
+    font-family: "pixelfont";
+    font-size: 2rem;
     position: absolute;
     top: 0;
     left: 30px;
     z-index: 100;
 }
 
+/* Override the margin from reset.css */
 p {
-    font-family: "pixelfont";
-    font-size: 2rem;
+    margin-bottom: 0;
 }
 
+/* Media Queries =========================================================================================================== */
+
+/* Media Query for small devices (phones) */
 @media (max-width: 425px) {
+    
+    /* Resize sprites on the table to be smaller */
     .character img {
         min-width: 50px;
+    }
+    
+    /* Rezise portraits to be smaller */
+    #portrait {
+        width: 75px;
+        height: 75px;
     }
 }
